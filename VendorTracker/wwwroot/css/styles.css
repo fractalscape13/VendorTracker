@@ -1,0 +1,34 @@
+body, html {
+  min-height: 100%;
+}
+
+body {
+  background-color: darkred;
+  background-image: linear-gradient(black, indigo, cyan, goldenrod, darkred);
+  text-align: center;
+  font-family: courier;
+  color: ivory;
+}
+
+button {
+  border: 3px solid black;
+  border-radius: 15px;
+  background-image: radial-gradient(ivory, red);
+  margin: 25px;
+  font-size: 140%;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+input {
+  background-color: black;
+  border: 3px solid black;
+  border-radius: 20px;
+  text-align: center;
+  color: ivory;
+  width: 35%;
+  margin-bottom: 30px;
+}
