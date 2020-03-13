@@ -5,6 +5,7 @@
 @using VendorTracker.Models;
 
 <h3>Order List for @Model["vendor"].Name:</h3>
+<p>@Model["vendor"].Description</p>
 
 <div class="box">
   @if (Model["order"].Count == 0)
