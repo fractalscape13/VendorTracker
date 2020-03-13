@@ -30,5 +30,10 @@ namespace VendorTracker.Models
     {
       return _instances[searchId - 1];
     }
+
+    public static Order DeleteOrder(int searchId)
+    {
+      return _instances[searchId - 1];
+    }
   }
 }

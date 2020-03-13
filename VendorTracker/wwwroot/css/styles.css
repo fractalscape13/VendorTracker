@@ -4,7 +4,7 @@ body, html {
 
 body {
   background-color: darkred;
-  background-image: linear-gradient(black, indigo, cyan, goldenrod, darkred);
+  background-image: linear-gradient(black, indigo, rgb(2, 97, 134), goldenrod, darkred);
   text-align: center;
   font-family: courier;
   color: ivory;
