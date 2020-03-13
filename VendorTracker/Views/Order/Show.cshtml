@@ -13,7 +13,8 @@
   <a href='/vendor/@Model["vendor"].Id/order/new'>Add another order</a><br>
   <form action='/vendor/@Model["vendor"].Id/order/@Model["order"].Id/delete' method="post">
     <input id="orderId" name="orderId" type="hidden" value='@Model["order"].Id'>
-    <button type="submit">Delete this order</button>
+    <input id="vendorId" name="vendorId" type="hidden" value='@Model["vendor"].Id'>
+    <button class="delete" type="submit">Delete this order</button>
   </form>
 
   <a href='/vendor/@Model["vendor"].Id'>Back to order list</a><br>

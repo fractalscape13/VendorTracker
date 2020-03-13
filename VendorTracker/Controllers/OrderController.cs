@@ -24,12 +24,5 @@ namespace VendorTracker.Controllers
       Vendor vendor = Vendor.Find(vendorId);
       return View(vendor);
     }
-
-    [HttpPost("/vendor/{vendorId}/order/{orderId}/delete")]
-    public ActionResult DeleteOrder(int orderId)
-    {
-      Order.DeleteOrder(orderId);
-      return View();
-    }
   }
 }
