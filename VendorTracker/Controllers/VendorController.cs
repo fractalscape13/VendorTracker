@@ -21,9 +21,9 @@ namespace VendorTracker.Controllers
     }
 
     [HttpPost("/vendor")]
-    public ActionResult Create(string vendorName)
+    public ActionResult Create(string vendorName, string description)
     {
-      Vendor newvendor = new Vendor(vendorName);
+      Vendor newVendor = new Vendor(vendorName, description);
       return RedirectToAction("Index");
     }
 
@@ -36,19 +36,6 @@ namespace VendorTracker.Controllers
       model.Add("vendor", selectedVendor);
       model.Add("order", vendorOrder);
       return View(model);
-    }
-
-    [HttpPost("vendor/{vendorId}/order")]
-    public ActionResult Create(int vendorId, string orderName)
-    {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Vendor foundVendor = Vendor.Find(vendorId);
-      Order newOrder = new Order(orderName);
-      foundVendor.AddOrder(newOrder);
-      List<Order> vendorOrder = foundVendor.Orders;
-      model.Add("order", vendorOrder);
-      model.Add("vendor", foundVendor);
-      return View("Show", model);
     }
   }
 }

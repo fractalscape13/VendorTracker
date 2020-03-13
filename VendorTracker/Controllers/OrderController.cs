@@ -25,6 +25,19 @@ namespace VendorTracker.Controllers
       return View(vendor);
     }
 
+    [HttpPost("vendor/{vendorId}/order")]
+    public ActionResult Create(int vendorId, string orderTitle, string description, int price, string date)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Vendor foundVendor = Vendor.Find(vendorId);
+      Order newOrder = new Order(orderTitle, description, price, date);
+      foundVendor.AddOrder(newOrder);
+      List<Order> vendorOrder = foundVendor.Orders;
+      model.Add("order", vendorOrder);
+      model.Add("vendor", foundVendor);
+      return View("Show", model);
+    }
+
     [HttpPost("/vendor/{vendorId}/order/delete")]
     public ActionResult DeleteAll(int vendorId)
     {
