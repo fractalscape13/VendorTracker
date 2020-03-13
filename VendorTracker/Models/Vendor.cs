@@ -8,6 +8,7 @@ namespace VendorTracker.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public int Id { get; }
+    public static int idCounter = 1;
     public List<Order> Orders { get; set; }
 
     public Vendor(string vendorName, string description)
@@ -15,13 +16,19 @@ namespace VendorTracker.Models
       _instances.Add(this);
       Name = vendorName;
       Description = description;
-      Id = _instances.Count;
+      Id = idCounter;
       Orders = new List<Order>{};
+      IncreaseCounter();
     }
 
     public void ClearAll()
     {
       Orders.Clear();
+    }
+
+    public static void IncreaseCounter()
+    {
+      idCounter++;
     }
 
     public static List<Vendor> GetAll()
@@ -31,12 +38,26 @@ namespace VendorTracker.Models
 
     public static Vendor Find(int searchId)
     {
-      return _instances[searchId-1];
+      for (int i=0; i<=_instances.Count; i++)
+      {
+        if (_instances[i].Id == searchId)
+        {
+          return _instances[i];
+        }
+      }
+      return null;
     }
 
     public static void Delete(int searchId)
     {
-      _instances.RemoveAt(searchId-1);
+      for (int i=0; i<=_instances.Count; i++)
+      {
+        if (_instances[i].Id == searchId)
+        {
+          _instances.RemoveAt(i);
+          break;
+        }
+      }
     }
 
     public void AddOrder(Order order)

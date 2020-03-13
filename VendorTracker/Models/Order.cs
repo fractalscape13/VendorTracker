@@ -28,12 +28,12 @@ namespace VendorTracker.Models
 
     public static Order Find(int searchId)
     {
-      return _instances[searchId - 1];
+      return _instances[searchId-1];
     }
 
     public static void DeleteOrder(int searchId)
     {
-       _instances.RemoveAt(searchId - 1);
+       _instances.RemoveAt(searchId-1);
     }
   }
 }

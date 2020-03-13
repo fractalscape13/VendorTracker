@@ -52,18 +52,20 @@ namespace VendorTracker.Controllers
     }
 
     [HttpPost("/vendor/{vendorId}/order/delete")]
-    public ActionResult DeleteAll(int vendorId)
+    public ActionResult DeleteAll(string searchId)
     {
-      Vendor vendor = Vendor.Find(vendorId);
+      int numId = int.Parse(searchId);
+      Vendor vendor = Vendor.Find(numId);
       vendor.ClearAll();
       return RedirectToAction("Index");
     }
     
     [HttpPost("/vendor/{vendorId}/delete")]
-    public ActionResult DeleteVendor(int vendorId)
+    public ActionResult DeleteVendor(string searchId)
     {
-      Vendor.Delete(vendorId);
-      return RedirectToAction("Index");
+      int numId = int.Parse(searchId);
+      Vendor.Delete(numId);
+      return View();
     }
   }
 }
