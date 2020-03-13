@@ -50,5 +50,13 @@ namespace VendorTracker.Controllers
       model.Add("vendor", foundVendor);
       return View("Show", model);
     }
+
+    [HttpPost("/vendor/{vendorId}/delete")]
+    public ActionResult DeleteAll(int vendorId)
+    {
+      Vendor vendor = Vendor.Find(vendorId);
+      vendor.ClearAll();
+      return RedirectToAction("Index");
+    }
   }
 }

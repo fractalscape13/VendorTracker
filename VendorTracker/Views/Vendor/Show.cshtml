@@ -4,7 +4,7 @@
 
 @using VendorTracker.Models;
 
-<h3>@Model["vendor"].Name</h3>
+<h3>@Model["vendor"].Name</h1>
 <p>@Model["vendor"].Description</p>
 
 <div class="box">
@@ -15,12 +15,16 @@
   else 
   {
     <p>Click an order to see details</p>
-  }
-  @foreach (Order order in @Model["order"])
-  {
-    <h3><a href='/vendor/@Model["vendor"].Id/order/@order.Id'>@order.Title</a></h3>
-  }
+    @foreach (Order order in @Model["order"])
+    {
+      <h3><a href='/vendor/@Model["vendor"].Id/order/@order.Id'>@order.Title</a></h3>
+    }
 
+    <form action='/vendor/@Model["vendor"].Id/delete' method="post">
+      <input id="orderId" name="orderId" type="hidden" value='@Model["vendor"].Id'>
+      <button class="delete" type="submit">Delete all orders for this vendor</button>
+    </form>
+  }
   <p><a href='/vendor/@Model["vendor"].Id/order/new'>Add a new order</a></p>
   <p><a href='/vendor'>Return to vendor list</a></p>
   <p><a href='/'>Return to Main Page</a></p>
