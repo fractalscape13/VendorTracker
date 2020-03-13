@@ -1,3 +1,20 @@
 @{
   Layout = "_Layout";
 }
+
+<h1>Add a new order for @Model.Name</h1>
+
+<div class="box">
+  <form action="/vendor/@Model.Id/order" method="post">
+    <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
+    <label for="title">Order Title</label>
+    <input id="title" name="title" type="text"><br>
+    <label for="description">Description</label>
+    <input id="description" name="description" type="text"><br>
+    <label for="price">Price</label>
+    <input id="price" name="price" type="number"><br>
+    <label for="date">Date</label>
+    <input id="date" name="date" type="text"><br>
+    <button type='submit'>Add order</button>
+  </form>
+</div>
