@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@using MusicOrganizer.Models;
+
+<h3>Order List for @Model["vendor"].Name:</h3>
+
+<div class="box">
+  <ul>
+  @foreach (Order order in @Model["order"])
+  {
+    <li><a href='/vendor/@Model["vendor"].Id/order/@order.Id'>@order.Title</a></li>
+  }
+  </ul>
+
+  <p><a href='/vendor/@Model["vendor"].Id/order/new'>Add a new order</a></p>
+  <p><a href='/vendor'>Return to vendor list</a></p>
+  <p><a href='/'>Return to Main Page</a></p>
+</div>
