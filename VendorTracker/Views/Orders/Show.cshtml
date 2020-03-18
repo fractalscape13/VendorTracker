@@ -10,13 +10,13 @@
   <p>Description: @Model["order"].Description</p>
   <p>Price: $@Model["order"].Price</p>
   <p>Date of order: @Model["order"].Date</p>
-  <a href='/vendor/@Model["vendor"].Id/order/new'>Add another order</a><br>
-  <form action='/vendor/@Model["vendor"].Id/order/@Model["order"].Id/delete' method="post">
+  <a href='/vendors/@Model["vendor"].Id/orders/new'>Add another order</a><br>
+  <form action='/vendors/@Model["vendor"].Id/orders/@Model["order"].Id/delete' method="post">
     <input id="orderId" name="orderId" type="hidden" value='@Model["order"].Id'>
     <input id="vendorId" name="vendorId" type="hidden" value='@Model["vendor"].Id'>
     <button class="delete" type="submit">Delete this order</button>
   </form>
 
-  <a href='/vendor/@Model["vendor"].Id'>Back to order list</a><br>
-  <a href='/vendor'>View all vendors</a>
+  <a href='/vendors/@Model["vendor"].Id'>Back to order list</a><br>
+  <a href='/vendors'>View all vendors</a>
 </div>

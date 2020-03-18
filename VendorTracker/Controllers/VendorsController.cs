@@ -5,29 +5,29 @@ using VendorTracker.Models;
 
 namespace VendorTracker.Controllers
 {
-  public class VendorController : Controller
+  public class VendorsController : Controller
   {
-    [HttpGet("/vendor")]
+    [HttpGet("/vendors")]
     public ActionResult Index()
     {
       List<Vendor> allVendors = Vendor.GetAll();
       return View(allVendors);
     }
 
-    [HttpGet("/vendor/new")]
+    [HttpGet("/vendors/new")]
     public ActionResult New()
     {
       return View();
     }
 
-    [HttpPost("/vendor")]
+    [HttpPost("/vendors")]
     public ActionResult Create(string vendorName, string description)
     {
       Vendor newVendor = new Vendor(vendorName, description);
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/vendor/{id}")]
+    [HttpGet("/vendors/{id}")]
     public ActionResult Show(int id)
     {
       Dictionary<string, object> modelDictionary = new Dictionary<string, object>();
@@ -38,7 +38,7 @@ namespace VendorTracker.Controllers
       return View(modelDictionary);
     }
 
-    [HttpPost("vendor/{vendorId}/order")]
+    [HttpPost("vendors/{vendorId}/orders")]
     public ActionResult Create(int vendorId, string title, string description, int price, string date)
     {
       Dictionary<string, object> modelDictionary = new Dictionary<string, object>();
@@ -51,7 +51,7 @@ namespace VendorTracker.Controllers
       return View("Show", modelDictionary);
     }
 
-    [HttpPost("/vendor/{vendorId}/order/delete")]
+    [HttpPost("/vendors/{vendorId}/orders/delete")]
     public ActionResult DeleteAll(string searchId)
     {
       int numId = int.Parse(searchId);
@@ -60,7 +60,7 @@ namespace VendorTracker.Controllers
       return RedirectToAction("Index");
     }
     
-    [HttpPost("/vendor/{vendorId}/delete")]
+    [HttpPost("/vendors/{vendorId}/delete")]
     public ActionResult DeleteVendor(string searchId)
     {
       int numId = int.Parse(searchId);
@@ -68,7 +68,7 @@ namespace VendorTracker.Controllers
       return View();
     }
 
-    [HttpPost("/vendor/{vendorId}/order/{orderId}/delete")]
+    [HttpPost("/vendors/{vendorId}/orders/{orderId}/delete")]
     public ActionResult DeleteOrder(int vendorId, int orderId)
     {
       Vendor vendor = Vendor.Find(vendorId);

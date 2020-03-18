@@ -5,9 +5,9 @@ using VendorTracker.Models;
 
 namespace VendorTracker.Controllers
 {
-  public class OrderController : Controller
+  public class OrdersController : Controller
   {
-    [HttpGet("/vendor/{vendorId}/order/{orderId}")]
+    [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
     public ActionResult Show(int vendorId, int orderId)
     {
       Order currentOrder = Order.Find(orderId);
@@ -18,7 +18,7 @@ namespace VendorTracker.Controllers
       return View(modelDictionary);
     }
 
-    [HttpGet("/vendor/{vendorId}/order/new")]
+    [HttpGet("/vendors/{vendorId}/orders/new")]
     public ActionResult New(int vendorId)
     {
       Vendor vendor = Vendor.Find(vendorId);
